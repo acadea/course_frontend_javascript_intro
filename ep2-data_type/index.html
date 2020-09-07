@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // single quote or double quote makes no difference
+        let string = "abc";
+        let string2 = 'abc';
+
+        let joined = string + string2
+        console.log(joined);
+
+        // float -- number with decimals
+        // integer -- number without decimals
+        let number = 123;
+        let result = 12 + 34 - 51 * 2 / 4;
+        console.log(result);
+
+        // boolean
+        let booleanTrue = true;
+        let booleanFalse = false;
+
+         
+        // array: store a group of items in one go
+        let fruits = ['apple', 'orange', 'kiwi', 'durian'];
+
+        // Object: a list of key value pair
+
+        let fruitsEatenByMeToday = {
+            apple: 3,
+            orange: 5,
+            kiwi: 12,
+            apple: 1, // this will overwrite the previous apple
+        };
+
+        // null means empty
+        let hey = null;
+
+        // undefined usually means the variable hasn't been initialised yet
+        let heyya;  // heyya will be undefined by default
+
+        let heyyo = undefined;
+
+        // NaN appears when we tried to perform numerical operation to non numeric data
+        let notANumber = NaN;
+        console.log(1 / {});  // expect: NaN
+
+        console.log(1 / '3'); // expect: 0.33333
+        // we get infinity when we divide something by zero
+        let infinity = Infinity;
+        console.log(1 / 0);
+
+
+        // adding number to string will make it string
+        console.log(1 + "5");  // expect: "15"
+
+        console.log(1 + Number("2"));  // expect 3
+
+    </script>
+</body>
+</html>
