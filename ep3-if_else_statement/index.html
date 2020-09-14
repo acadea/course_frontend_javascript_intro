@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let number = 1;
+
+        if(1 === number){
+            console.log("It is the One!");
+        }else{
+            console.log("Number is not one");
+        }
+
+        // == vs ===
+        // == checks for value only
+        // === checks for value and type
+        
+        if(1 == "1"){
+            console.log("its true!");
+        }else{
+            console.log("false!!");
+        }
+
+        // ! -- not operator 
+
+        // the comparison operators: 
+        // <   <=   lesser   lesser or eq to
+        if(2 < 5){
+            console.log("less");
+        }
+
+
+
+        // >   >=   greater   greater or eq to
+        
+
+        // ask question via confirm
+        let response = confirm("Do you want an Ice Cream?")
+
+        if(response){
+            alert("Here you go! 🍨");
+        }else{
+            alert("Too bad :( ");
+        }
+
+        // // else if chain
+        // let answer = prompt("What is 1 + 5?");
+
+        // if(answer === "6"){
+        //     alert("Wonderfullll")
+        // }else if (answer === ""){
+        //     alert("You didn't even try???")
+        // }else{
+        //     alert("Whoopss! Try again.")
+        // }
+
+        
+        // combining conditions
+        // and &&
+        // or ||
+        const username = prompt("Username?");
+        const password = prompt("Password?");
+        // username is 'sam' and password is 'secret'
+        // or username is 'admin'
+        const isCredentialValid = (username === "sam" && password === "secret") || username === "admin";
+
+        // if((username === "sam" && password === "secret") || username === "admin"){
+        if(isCredentialValid){
+            alert("Welcome!")
+        }else{
+            alert("Nope")
+        }
+
+
+
+
+        // truthy and falsey
+        let check;
+
+        // Number
+        // 1 and any other numbers are truthy but
+        // 0 is falsey
+        check = 12; // expected: truthy
+        check = 0; // expected: falsey
+        
+        // String
+        // all strings are truthy but
+        // "" (empty string) is falsey
+        check = "";
+        check = "abc";
+
+        // Array
+        // Any array is truthy, including []
+        check = []
+
+        // Object
+        // Any object is truthy, including {}
+        check = {}
+
+        // Other
+        // undefined is falsey
+        check = undefined;
+        // null is falsey
+        check = null;
+        // NaN is falsey
+        check = NaN;
+
+        if(check){
+            console.log("check is true");
+        }
+        
+
+
+
+
+        
+
+
+
+    </script>
+</body>
+</html>
