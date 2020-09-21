@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let fruits = ['apple', 'orange', 'kiwi', 'durian'];
+
+        // access element by index
+        console.log(fruits[2]);  // expect: kiwi
+
+        // overwriting the value of an element
+        fruits[1] = 'lemon';
+        console.log(fruits);
+
+        // slice: extract portion of an array
+        console.log(fruits.slice(1,3)); // index 1 to 3
+        console.log(fruits.slice(2));
+
+
+        // getting the length of array
+        console.log(fruits.length);
+
+        // removing the last element
+        fruits.pop()
+
+        // add an element to the end of array
+        fruits.push('grape');
+
+        // removing the first element
+        fruits.shift();
+
+        // add an element to the beginning
+        fruits.unshift('banana');
+
+        // deleting the second item
+        fruits.splice(1, 1);
+
+        // adding an item at index 2
+        fruits.splice(2, 0, 'mango');
+
+
+        let car = {
+            name: 'Corolla',
+            brand: 'Toyota',
+            colour: 'White',
+        }
+
+        // access property
+        console.log(car.name);
+        console.log(car['name']);
+
+        // overwrite value
+        car.name = 'abc';
+        car['name'] = 'abc2';
+
+        // add new property
+        car.origin = 'Japan';
+
+        // delete property
+        delete car.origin;
+
+        console.log(Object.keys(car));
+        console.log(Object.values(car));
+
+
+        // 3 components in a for loop
+        // 1. initialisation
+        // 2. condition of the for loop
+        // 3. what to do after every iteration
+
+        // Steps:
+        // 1. initialise
+        // 2. Check if condition passes
+        // 3. If passes, run the code in the loop
+        // 4. when the iteration ends, run the third part
+        // 5. repeat step 2
+        for (let index = 0; index < fruits.length; index++) {
+
+            const fruit = fruits[index];
+
+            if(fruit === 'apple'){
+                // continue will move on to the next iteration
+                continue;
+            }
+
+            console.log(fruit);
+
+            if(fruit === 'kiwi'){
+                // break will stop the loop
+                break;
+            }
+
+            console.log(fruit);
+        }
+
+        // looping string is the same
+        // string is very similar to array, and has a lot of common function
+
+
+        // looping object
+        for (let index = 0; index < Object.keys(car).length; index++) {
+            const key = Object.keys(car)[index];
+            const value = car[key];
+            console.log(key, value);
+            // or
+            const value = Object.values(car)[index];
+        }
+
+        // the other 2 types of for loop
+
+        for (const key in car) {
+            
+            const element = car[key];
+            
+        }
+
+        for (const fruit of fruits) {
+            
+        }
+
+        let ii = 0;
+        let response = false;
+        while(!response){
+            response = confirm("Please click ok to end this nightmare... You've clicked cancel for " + String(ii) + " times.")
+            
+            // increment by 1
+            ii++;
+
+            // incrementing
+            // ii = ii + 1;
+            // ii += 1;
+
+        }
+
+    </script>
+</body>
+</html>
