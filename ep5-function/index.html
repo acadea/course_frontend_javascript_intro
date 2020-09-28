@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+
+        function sayHello(){
+            console.log('hello');
+        }
+
+        sayHello();
+
+        // store variable as anonymous function
+        let sayHello2 = function(){
+            console.log('Hello 2');
+        }
+
+        // using arrow function
+        let sayHello3 = () => {
+            console.log('Hello 3');
+        }
+
+        // defining function that takes in an argument
+        function say(word){
+            console.log(word);
+        }
+
+        say('hell');
+        say('hell yeah');
+
+        let say2 = function(word){
+            console.log(word);
+        }
+
+        let say3 = (word) => {
+            console.log(word);
+        }
+
+        // adding multiple argument
+        function add(x, y){
+            return x + y;
+        }
+
+        let sum = add(4, 6);
+
+        console.log(sum);
+
+        console.log(console);
+
+        // defining function in an object
+        let car = {
+            name: 'Toyota',
+            drive: function(){
+                console.log('brum brum');
+            }
+        };
+
+        car.drive();
+
+        
+        // infinite arguments using the 'rest operator' (another video)
+        function add(...numbers){
+            let sum = 0;
+            for (let index = 0; index < numbers.length; index++) {
+                sum += numbers[index];
+            }
+            return sum;
+        }
+
+    </script>
+
+</body>
+</html>
