@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // why do we need to manipulate string? 
+        
+        // validation, for example, validating a valid email
+        // display text in the browser, in different casing
+        // process data / convert into the format that we want
+        
+
+        let hey = 'I am a magician. I trick people :)'
+
+        console.log(hey.toLowerCase());
+        console.log(hey.toUpperCase());
+
+        console.log(hey.split(' '));
+
+        console.log(hey.slice(0,3));
+        console.log(hey.charAt(3));
+
+
+
+        let fruits = ['apple', 'orange', 'kiwi', 'durian'];
+
+        console.log(fruits.join());
+        console.log(fruits.join(' '));
+
+        // add new elements to the end of array and return a new copy of the array
+        // does not change the source array
+        console.log(fruits.concat(['pineapple', 'papaya']));
+        console.log(fruits);
+
+        console.log(fruits.includes('orange'));  // true
+        console.log(fruits.includes('orangey')); // false
+
+        // checks every element passes the condition
+        console.log(fruits.every((fruit) => {
+            return fruit.length < 5
+            return fruit.length < 7
+        }));
+
+        fruits.forEach((fruit) => {
+            console.log(fruit);
+        });
+
+        // convert every elememt in an array into something else
+        // turn every element into uppercase
+        const mapped = fruits.map((fruit) => {
+            return fruit.toUpperCase()
+        })
+
+        console.log(mapped);
+
+        // filter elements based on a condition
+        // to filter out all fruits that have < 5 characters
+        const filtered = fruits.filter((fruit) => {
+            return fruit.length < 5
+        })
+        console.log(filtered);
+
+        
+        const ans = prompt('Enter your email.');
+
+        // define the mandatory symbols
+        const mustPresent = ['.', '@'];
+        
+        // check if user input has the symbols
+        
+        const splitted = ans.split('');
+
+
+        const hasValidSymbols = mustPresent.every((symbol) => {
+            return splitted.includes(symbol);
+        })
+
+        // if doesnt have them then alert
+        if(!hasValidSymbols){
+            alert('Uh oh, please include ' + mustPresent.join(' and '))
+        }else{
+            alert('VALID');
+        }
+
+
+    </script>
+
+</body>
+</html>
