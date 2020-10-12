@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+
+        try {
+            let hey = 'there';
+            hey();
+
+        } catch (error) {
+            // error ^ here represent the error caught in the try block
+            
+            console.log('catching error..');
+            console.log(error);
+        }
+
+        function add(x, y) {
+            // if (x is not a number) or (y is not a number)
+            if(!(x instanceof Number) || !(y instanceof Number)){
+                throw new Error('The arguments supplied must be numbers');
+            }
+            return x + y;
+        }
+
+        add('a', 5);
+
+        // Should we wrap everything in a try block then?
+        // short ans: no
+        // Too generic, we wouldn't know which part went wrong
+        // good practice: wrap your code in try and catch where you would expect an error
+        // eg: user input
+
+    </script>
+
+
+</body>
+</html>
