@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .bg-grey {
+                background-color: grey;
+            }
+            .border {
+                border: 3px solid black;
+            }
+            .random-word {
+                padding: 5px;
+                display: inline-block;
+            }
+            .text-large {
+                font-size: large;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <!-- custom attributes, best practice always prefix 'data-' attribute -->
+            <h1
+                abc="123"
+                class="text-large"
+                data-standard="321"
+                id="main-heading"
+            >
+                Something here..
+            </h1>
+
+            <article class="bg-grey border">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Labore eum, earum deserunt numquam quis explicabo. Delectus
+                    id, cum voluptate dicta aperiam sunt voluptatum quis eaque
+                    aliquam distinctio reiciendis iste minima?
+                </p>
+            </article>
+
+            <article class="bg-grey">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Labore eum, earum deserunt numquam quis explicabo. Delectus
+                    id, cum voluptate dicta aperiam sunt voluptatum quis eaque
+                    aliquam distinctio reiciendis iste minima?
+                </p>
+            </article>
+
+            <article id="random-words"></article>
+        </section>
+
+        <script>
+            // putting our code in the onload function make sure the browser only
+            // runs javascript when the DOM has loaded.
+            window.onload = function () {
+                // document.write('<h1>heyayayya</h1>');
+
+                const headingElement = document.getElementById("main-heading");
+                console.log(headingElement);
+                const id = headingElement.id;
+                // or
+                // const id = headingElement.getAttribute('id');
+                console.log(id);
+
+                // custom attribute
+                // standard way to add custom attribute is to have 'data-' prefixed to its value
+                // without 'data-' it will still work, but js wont collect it to the 'dataset' property
+                console.log(headingElement.dataset);
+
+                const abc = headingElement.getAttribute("abc");
+                console.log(abc);
+
+                // get the classes
+                console.log(headingElement.className);
+                console.log(headingElement.classList);
+
+                // setting the classes
+                headingElement.className = "bg-grey";
+
+                // or
+                // headingElement.classList.add('bg-grey');
+
+                // adding multiple classes in one go
+                headingElement.className = "bg-grey border";
+                // headingElement.classList.add('bg-grey', 'border');
+
+                // benefit of using classList is you can add/remove individual class without
+                // resetting everything again.
+                // if we want to add a new class called 'abc' to headingElement
+                headingElement.className = "bg-grey border abc";
+                // in contrast
+                headingElement.classList.add("abc");
+
+                // if we want to remove the class border
+                // headingElement.className = 'bg-grey abc';
+                headingElement.classList.remove("border");
+
+                // get content of element
+                console.log(headingElement.textContent);
+
+                // set content of an element
+                headingElement.textContent = "Heyyaa";
+                headingElement.textContent = "<div>Heyyaa</div>";
+
+                // set html to an element
+                headingElement.innerHTML = "<span>some inner text</span>";
+
+                // cloning headingElement
+                const cloned = headingElement.cloneNode();
+                cloned.textContent = "heyayaya";
+
+                // creating an element via js
+                const subHeading = document.createElement("h4");
+                subHeading.textContent = "This is mini hey";
+                document.body.appendChild(subHeading);
+
+                // getting the first match
+                const firstArticle = document.querySelector("article");
+
+                // we can use CSS selectors
+                // const allBgGreys = document.querySelector('.bg-grey');
+                console.log(firstArticle);
+
+                const articles = document.querySelectorAll("article");
+                console.log(articles);
+
+                // we need an array of words for us to loop thru and
+                // generate the coloured words
+                const lorem =
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint laboriosam dignissimos, blanditiis distinctio atque accusamus eius quasi ratione ipsum. Totam veritatis neque perspiciatis sed mollitia sapiente ullam facere harum. Error! Mollitia, debitis quaerat alias voluptate, nisi dolores earum ut iste incidunt asperiores ipsam maxime nulla esse impedit explicabo necessitatibus quos et dignissimos veritatis dolorum facilis doloribus soluta? Optio, tempore distinctio. Molestias eligendi laudantium consectetur maxime tenetur pariatur fugit quia corporis? Harum deserunt molestiae error et aut, tempore sunt perferendis dignissimos sapiente iure voluptate commodi magnam vitae aspernatur inventore reprehenderit numquam!";
+                const splitted = lorem.split(" ");
+
+                // we need a way to generate random colour
+                const colors = [
+                    "red",
+                    "orange",
+                    "yellow",
+                    "greenyellow",
+                    "aliceblue",
+                    "mediumpurple",
+                ];
+                function getRandomColor() {
+                    return colors[Math.floor(Math.random() * colors.length)];
+                }
+
+                const randomWordsElement = document.getElementById(
+                    "random-words"
+                );
+                // for each word,
+                splitted.forEach((word) => {
+                    // we create a span element
+                    const span = document.createElement("span");
+
+                    // set the background colour to random
+                    const style = "background-color: " + getRandomColor();
+                    span.setAttribute("style", style);
+                    // set the content of span to the word
+                    span.textContent = word;
+                    span.className = "random-word";
+
+                    // append this span element to the DOM
+                    randomWordsElement.appendChild(span);
+                });
+
+                // forcing visitor to click on a link
+                // to force people to download something, add a 'download' attribute
+                const link = document.createElement("a");
+                link.setAttribute("href", "https://google.com");
+                // open link in new tab
+                link.setAttribute("target", "_blank");
+                link.textContent = "google";
+                // programatically click on the link (will not work if you are viewing the page on device mode in dev tool eg iphoneX)
+                link.click();
+            };
+        </script>
+    </body>
+</html>
