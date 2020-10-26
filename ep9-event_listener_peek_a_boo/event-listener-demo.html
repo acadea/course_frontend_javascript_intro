@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <main>
+            <section>
+                <article><button id="hey-button">hey there</button></article>
+            </section>
+
+            <form>
+                <button type="submit" id="submit-button">Submit</button>
+                <input type="text">
+            </form>
+        </main>
+
+        <script>
+            window.onload = function () {
+                const button = document.getElementById("hey-button");
+                const main = document.querySelector("main");
+                const form = document.querySelector("form");
+                const submit = document.getElementById("submit-button");
+
+                // form.addEventListener('submit', (event) => {
+                //     event.preventDefault();
+                // });
+
+                submit.addEventListener("click", function (event) {
+                    // to stop default behavior, ie refreshing the page
+                    event.preventDefault();
+                });
+
+                button.addEventListener("click", function (event) {
+                    // use stopPropagation sparingly, may be difficult to debug when your app is larger
+                    event.stopPropagation();
+                    main.setAttribute("style", "background-color: red");
+                    console.log("heyyy from button");
+                });
+
+                main.addEventListener("click", function (event) {
+                    console.log("heyyy from main");
+                });
+
+                window.addEventListener("contextmenu", function (event) {
+                    // stop the user from opening the context menu
+                    event.preventDefault();
+                    console.log("nah");
+                });
+            };
+        </script>
+    </body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body{
+            height: 100vh;
+            width: 100%;
+            margin: 0;
+        }
+        .hide{
+            display: none;
+        }
+        .light{
+            background-color: rgb(72, 72, 72);
+        }
+        .dark{
+            background-color: #21211f;
+        }
+        main{
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        button{
+            background-color: rgb(43, 72, 201);
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            font-size: large;
+            border: none;
+            border-radius: 15%;
+            outline: none;
+            box-shadow: 5px 5px 20px rgb(44, 44, 44);
+        }
+        button:active{
+            box-shadow: 0px 0px 10px rgb(44, 44, 44);
+        }
+        
+        
+    </style>
+</head>
+<body>
+
+    <main class="light" data-show-ghost="false">
+        <section>
+            <!--Credit: https://dribbble.com/shots/3844629-October-1  -->
+            <!-- Claire Larkins -->
+            <img class="hide" id="boo" src="./assets/ghost.gif" alt="boo">
+        </section>
+
+        <section>
+            <button id="the-button" >Peek a boo ;)</button>
+        </section>
+    </main>
+
+    <script>
+
+        const button = document.getElementById('the-button');
+        const main = document.querySelector("main");
+        const img = document.getElementById("boo");
+
+        button.addEventListener("click", function(event){
+            const isShowingGhost = main.getAttribute('data-show-ghost');
+
+            if(isShowingGhost !== 'true'){
+                // change background to dark
+                main.className = 'dark';
+                // remove the hide class
+                img.className = '';
+
+                main.setAttribute('data-show-ghost', 'true');
+            }else{
+                // change background to light
+                main.className = 'light';
+                // hide the ghost
+                img.className = 'hide';
+
+                main.setAttribute('data-show-ghost', 'false');
+
+            }
+
+        })
+
+
+
+    </script>
+</body>
+</html>
