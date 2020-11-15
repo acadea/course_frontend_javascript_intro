@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            body {
+                height: 1000px;
+            }
+            #context-menu {
+                position: absolute;
+                width: 100px;
+                box-shadow: 3px 3px 10px grey;
+            }
+            .hide {
+                display: none;
+            }
+            #context-menu>ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+            .context-menu-item:hover {
+                background-color: rgb(195, 195, 195);
+                cursor: pointer;
+            }
+            .context-menu-item {
+                padding: 5px;
+                font-size: small;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- this is the context menu element -->
+        <article id="context-menu" class="hide">
+            <ul>
+                <li class="context-menu-item">Copy</li>
+                <li class="context-menu-item">Paste</li>
+                <li class="context-menu-item">Cut</li>
+                <li class="context-menu-item">Save to..</li>
+            </ul>
+        </article>
+
+        <script>
+            window.onload = function () {
+                const contextmenu = document.getElementById("context-menu");
+
+                const viewportWidth = document.documentElement.clientWidth;
+                const viewportHeight = document.documentElement.clientHeight;
+
+                
+                // context menu has to be in the dom to get its height
+                contextmenu.classList.remove('hide');
+
+                const contextmenuWidth = contextmenu.clientWidth;
+                const contextmenuHeight = contextmenu.clientHeight;
+
+                contextmenu.classList.add('hide');
+
+                /**
+                 * Helper function to genetare the position style
+                 */
+                function positionStyle(xPos, yPos) {
+                    return `left: ${xPos}px; top: ${yPos}px`;
+                }
+
+                /**
+                 * Helper function to determine if the element clicked is the context menu
+                 */
+                function isElementContextMenu(element) {
+                    return (
+                        element.classList.contains("context-menu-item") ||
+                        element.id === "context-menu"
+                    );
+                }
+
+                window.addEventListener("contextmenu", function (event) {
+                    event.preventDefault();
+
+                    // get mouse location, x and y coordinate
+                    let contextmenuX = event.clientX;
+                    let contextmenuY = event.pageY;
+
+                    
+
+                    // if mouse position too close to right edge or bottom edge
+                    // invert the context menu position
+                    const contextmenuRightEdge =
+                        event.clientX + contextmenuWidth;
+
+                    const contextmenuBottomEdge =
+                        event.clientY + contextmenuHeight;
+
+                    const shouldInvertX = contextmenuRightEdge > viewportWidth;
+
+                    const shouldInvertY = contextmenuBottomEdge > viewportHeight;
+
+                    // open the context menu on the other direction
+                    if (shouldInvertX) {
+                        contextmenuX = contextmenuX - contextmenuWidth;
+                    }
+
+                    if (shouldInvertY) {
+                        contextmenuY = event.pageY - contextmenuHeight;
+                    }
+
+                    // set the position
+                    contextmenu.setAttribute(
+                        "style",
+                        positionStyle(contextmenuX, contextmenuY)
+                    );
+
+                    // show the context menu
+                    contextmenu.classList.remove("hide");
+                });
+
+                window.addEventListener("click", function (event) {
+                    const element = event.target;
+
+                    // hide context menu if left clicking on anywhere else
+                    if (!isElementContextMenu(element)) {
+                        contextmenu.classList.add("hide");
+                    }
+                });
+            };
+        </script>
+    </body>
+</html>
